@@ -1,0 +1,163 @@
+import type { Recipe } from '../types';
+import { I, B, R } from './recipeKit';
+
+const CH = ['paha_atas', 'fillet_dada']; // alternatif potongan ayam (bahan bersih setara)
+const BONE = ['paha_atas'];
+
+// ====== AYAM (serves 4 porsi dewasa-ekuivalen, ±90 g daging bersih/porsi) ======
+const ayam: Recipe[] = [
+  R({ id: 'ayam-ungkep-kuning', name: 'Ayam goreng ungkep kuning', category: 'ayam', protein: 'ayam', serves: 4, method: 'goreng',
+    ingredients: [I('ayam_potong', 360, BONE), I('minyak', 120), I('garam', 4)], bumbu: [B('kuning', 120)], requiredDish: 'ungkep', prepMin: 15, cookMin: 45, favorite: true,
+    youtubeQuery: 'resep ayam ungkep bumbu kuning',
+    steps: ['Ungkep ayam dengan bumbu kuning, garam, dan sedikit air sampai bumbu meresap (±20 menit).', 'Dinginkan, simpan sebagian di kulkas/freezer sebagai stok.', 'Goreng dengan api sedang sampai kecokelatan dan matang sempurna.', 'Untuk anak: pastikan tidak pedas dan potong sesuai kemampuan mengunyah.'] }),
+  R({ id: 'ayam-kecap', name: 'Ayam kecap GF', category: 'ayam', protein: 'ayam', serves: 4, method: 'tumis',
+    ingredients: [I('ayam_potong', 360, BONE), I('kecap_manis', 50), I('minyak', 30)], bumbu: [B('bawang_jahe', 60)], note: 'Pakai kecap bebas gluten (cek label).' }),
+  R({ id: 'ayam-suwir-bawang', name: 'Ayam suwir bawang', category: 'ayam', protein: 'ayam', serves: 4, method: 'suwir',
+    ingredients: [I('ayam_potong', 360, CH), I('minyak', 30), I('garam', 3)], bumbu: [B('bawang_putih_cincang', 30), B('bawang_merah_cincang', 40)], favorite: true }),
+  R({ id: 'ayam-suwir-jahe', name: 'Ayam suwir jahe', category: 'ayam', protein: 'ayam', serves: 4, method: 'suwir',
+    ingredients: [I('ayam_potong', 360, CH), I('minyak', 30), I('garam', 3)], bumbu: [B('bawang_jahe', 50)] }),
+  R({ id: 'ayam-suwir-kunyit', name: 'Ayam suwir kunyit', category: 'ayam', protein: 'ayam', serves: 4, method: 'suwir',
+    ingredients: [I('ayam_potong', 360, CH), I('minyak', 30), I('garam', 3)], bumbu: [B('kuning', 60)] }),
+  R({ id: 'ayam-suwir', name: 'Ayam suwir (stok food prep)', category: 'ayam', protein: 'ayam', serves: 4, method: 'suwir',
+    ingredients: [I('ayam_potong', 360, CH), I('minyak', 20), I('garam', 3)], bumbu: [B('putih', 50)], cookMin: 30, note: 'Dipakai juga sebagai lauk alternatif makan siang ibu.' }),
+  R({ id: 'ayam-kuah-jahe', name: 'Ayam kuah jahe', category: 'ayam', protein: 'ayam', serves: 4, method: 'kuah',
+    ingredients: [I('ayam_potong', 360, BONE), I('daun_bawang', 10), I('garam', 4)], bumbu: [B('bawang_jahe', 70)] }),
+  R({ id: 'semur-ayam', name: 'Semur ayam', category: 'ayam', protein: 'ayam', serves: 4, method: 'semur',
+    ingredients: [I('ayam_potong', 360, BONE), I('kecap_manis', 60), I('minyak', 20)], bumbu: [B('semur', 80)], cookMin: 35 }),
+  R({ id: 'ayam-semur-bawang-gf', name: 'Ayam semur bawang GF', category: 'ayam', protein: 'ayam', serves: 4, method: 'semur',
+    ingredients: [I('ayam_potong', 360, BONE), I('kecap_manis', 60), I('minyak', 20)], bumbu: [B('semur', 60), B('bawang_merah_cincang', 40)], cookMin: 35 }),
+  R({ id: 'ayam-goreng-lengkuas', name: 'Ayam goreng lengkuas', category: 'ayam', protein: 'ayam', serves: 4, method: 'goreng',
+    ingredients: [I('ayam_potong', 360, BONE), I('minyak', 120), I('lengkuas', 20), I('garam', 4)], bumbu: [B('ungkep', 100)], cookMin: 40 }),
+  R({ id: 'ayam-cincang-bawang-putih', name: 'Ayam cincang bawang putih', category: 'ayam', protein: 'ayam', serves: 4, method: 'tumis',
+    ingredients: [I('fillet_dada', 360, ['paha_atas', 'ayam_potong']), I('minyak', 25), I('garam', 3)], bumbu: [B('bawang_putih_cincang', 40)], cookMin: 20 }),
+  R({ id: 'ayam-cincang-mentega', name: 'Ayam cincang mentega', category: 'ayam', protein: 'ayam', serves: 4, method: 'tumis',
+    ingredients: [I('fillet_dada', 360, ['paha_atas', 'ayam_potong']), I('butter', 20), I('garam', 3)], bumbu: [B('bawang_putih_cincang', 30)], cookMin: 20 }),
+  R({ id: 'ayam-bakar', name: 'Ayam bakar', category: 'ayam', protein: 'ayam', serves: 4, method: 'bakar',
+    ingredients: [I('ayam_potong', 360, BONE), I('kecap_manis', 40), I('minyak', 15)], bumbu: [B('bakar', 100)], cookMin: 45 }),
+  R({ id: 'ayam-bumbu-jahe', name: 'Ayam bumbu jahe', category: 'ayam', protein: 'ayam', serves: 4, method: 'tumis',
+    ingredients: [I('ayam_potong', 360, BONE), I('minyak', 25), I('garam', 4)], bumbu: [B('bawang_jahe', 80)] }),
+  R({ id: 'ayam-kentaki-gf', name: 'Ayam kentaki GF', category: 'ayam', protein: 'ayam', serves: 4, method: 'goreng',
+    ingredients: [I('ayam_potong', 360, BONE), I('tepung_gf', 80), I('telur', 1), I('minyak', 150), I('garam', 4)], bumbu: [B('putih', 50)], requiredDish: 'kentaki', cookMin: 40, favorite: true,
+    youtubeQuery: 'resep ayam goreng kentucky gluten free',
+    steps: ['Lumuri ayam dengan bumbu putih dan garam; diamkan 30 menit.', 'Celup ke telur kocok, gulingkan di tepung pelapis GF (bukan terigu/panko).', 'Goreng dengan api sedang sampai matang dan renyah.', 'Pisahkan peralatan yang pernah menyentuh terigu untuk mencegah kontaminasi silang.'] }),
+  R({ id: 'ayam-katsu-gf', name: 'Ayam katsu GF', category: 'ayam', protein: 'ayam', serves: 4, method: 'goreng',
+    ingredients: [I('fillet_dada', 360, ['paha_atas']), I('tepung_gf', 100), I('telur', 1), I('minyak', 150), I('garam', 3)], bumbu: [B('bawang_putih_cincang', 20)], requiredDish: 'katsu', cookMin: 40, favorite: true,
+    youtubeQuery: 'resep ayam katsu gluten free',
+    steps: ['Pipihkan fillet, bumbui bawang putih dan garam.', 'Celup telur kocok, lalu tepung pelapis GF (tanpa panko/terigu).', 'Goreng dengan api sedang sampai matang kecokelatan.', 'Potong sesuai kemampuan mengunyah anak.'] }),
+  R({ id: 'ayam-teriyaki-gf', name: 'Ayam teriyaki GF', category: 'ayam', protein: 'ayam', serves: 4, method: 'tumis',
+    ingredients: [I('ayam_potong', 360, CH), I('kecap_manis', 60), I('gula', 10), I('minyak', 20)], bumbu: [B('bawang_jahe', 50)] }),
+  R({ id: 'ayam-panggang-kecap-gf', name: 'Ayam panggang kecap GF', category: 'ayam', protein: 'ayam', serves: 4, method: 'panggang',
+    ingredients: [I('ayam_potong', 360, BONE), I('kecap_manis', 60), I('minyak', 15)], bumbu: [B('bakar', 80)], cookMin: 45 }),
+  R({ id: 'ayam-goreng-kremes-gf', name: 'Ayam goreng kremes GF', category: 'ayam', protein: 'ayam', serves: 4, method: 'goreng',
+    ingredients: [I('ayam_potong', 360, BONE), I('tepung_gf', 60), I('minyak', 150), I('garam', 4)], bumbu: [B('ungkep', 120)], cookMin: 45 }),
+];
+
+// ====== IKAN (serves 4, ±85 g daging bersih/porsi) ======
+const ikan: Recipe[] = [
+  R({ id: 'kembung-kuah-kuning', name: 'Kembung kuah kuning', category: 'ikan', protein: 'ikan', serves: 4, method: 'kuah',
+    ingredients: [I('ikan_kembung', 340), I('tomat', 50), I('garam', 4)], bumbu: [B('kuning', 100)], favorite: true }),
+  R({ id: 'kembung-goreng-kunyit', name: 'Kembung goreng kunyit', category: 'ikan', protein: 'ikan', serves: 4, method: 'goreng',
+    ingredients: [I('ikan_kembung', 340), I('minyak', 120), I('garam', 4)], bumbu: [B('kuning', 60)] }),
+  R({ id: 'kembung-balado', name: 'Kembung balado', category: 'ikan', protein: 'ikan', serves: 4, method: 'goreng', spice: 'hot', childMildVariant: true, requiredDish: 'balado',
+    ingredients: [I('ikan_kembung', 340), I('minyak', 130), I('garam', 4)], bumbu: [B('merah_pedas', 70), B('merah_tanpa_cabai', 30)], cookMin: 35,
+    youtubeQuery: 'resep ikan balado kembung',
+    steps: ['Goreng ikan sampai matang.', 'Sebelum cabai masuk, pisahkan bumbu merah TANPA cabai untuk porsi anak; masak ikan anak dengan bumbu itu.', 'Masak bumbu merah pedas untuk dewasa, masukkan ikan dewasa.', 'Periksa duri pada porsi anak.'] }),
+  R({ id: 'pepes-kembung', name: 'Pepes kembung', category: 'ikan', protein: 'ikan', serves: 4, method: 'kukus',
+    ingredients: [I('ikan_kembung', 340), I('tomat', 40), I('daun_bawang', 10), I('garam', 4)], bumbu: [B('kuning', 80)], cookMin: 45 }),
+  R({ id: 'kembung-kuah-asam', name: 'Kembung kuah asam', category: 'ikan', protein: 'ikan', serves: 4, method: 'kuah',
+    ingredients: [I('ikan_kembung', 340), I('tomat', 60), I('asam_jawa', 10), I('garam', 4)], bumbu: [B('kuning', 60)] }),
+  R({ id: 'kembung-bumbu-kuning', name: 'Kembung bumbu kuning', category: 'ikan', protein: 'ikan', serves: 4, method: 'tumis',
+    ingredients: [I('ikan_kembung', 340), I('minyak', 30), I('garam', 4)], bumbu: [B('kuning', 100)] }),
+  R({ id: 'nila-goreng', name: 'Nila goreng', category: 'ikan', protein: 'ikan', serves: 4, method: 'goreng',
+    ingredients: [I('ikan_nila', 340), I('minyak', 130), I('garam', 4)], bumbu: [B('bawang_putih_cincang', 20)] }),
+  R({ id: 'nila-goreng-bawang', name: 'Nila goreng bawang', category: 'ikan', protein: 'ikan', serves: 4, method: 'goreng',
+    ingredients: [I('ikan_nila', 340), I('minyak', 130), I('garam', 4)], bumbu: [B('bawang_putih_cincang', 30), B('bawang_merah_cincang', 30)] }),
+  R({ id: 'nila-kukus-jahe', name: 'Nila kukus jahe', category: 'ikan', protein: 'ikan', serves: 4, method: 'kukus',
+    ingredients: [I('ikan_nila', 340), I('daun_bawang', 20), I('garam', 4)], bumbu: [B('bawang_jahe', 60)] }),
+  R({ id: 'nila-kuah-kuning', name: 'Nila kuah kuning', category: 'ikan', protein: 'ikan', serves: 4, method: 'kuah',
+    ingredients: [I('ikan_nila', 340), I('tomat', 40), I('garam', 4)], bumbu: [B('kuning', 100)] }),
+  R({ id: 'nila-bakar-bumbu-kuning', name: 'Nila bakar bumbu kuning', category: 'ikan', protein: 'ikan', serves: 4, method: 'bakar',
+    ingredients: [I('ikan_nila', 340), I('minyak', 15), I('garam', 4)], bumbu: [B('kuning', 80)], cookMin: 40 }),
+  R({ id: 'lele-goreng', name: 'Lele goreng', category: 'ikan', protein: 'ikan', serves: 4, method: 'goreng',
+    ingredients: [I('ikan_lele', 340), I('minyak', 150), I('garam', 4)], bumbu: [B('bawang_putih_cincang', 20)] }),
+  R({ id: 'lele-goreng-kunyit', name: 'Lele goreng kunyit', category: 'ikan', protein: 'ikan', serves: 4, method: 'goreng',
+    ingredients: [I('ikan_lele', 340), I('minyak', 150), I('garam', 4)], bumbu: [B('kuning', 50)] }),
+  R({ id: 'layang-goreng', name: 'Ikan layang goreng', category: 'ikan', protein: 'ikan', serves: 4, method: 'goreng',
+    ingredients: [I('ikan_layang', 340), I('minyak', 130), I('garam', 4)], bumbu: [B('bawang_putih_cincang', 20)], youtubeQuery: 'resep ikan layang goreng' }),
+  R({ id: 'layang-balado', name: 'Layang balado', category: 'ikan', protein: 'ikan', serves: 4, method: 'goreng', spice: 'hot', childMildVariant: true, requiredDish: 'balado',
+    ingredients: [I('ikan_layang', 340), I('minyak', 130), I('garam', 4)], bumbu: [B('merah_pedas', 70), B('merah_tanpa_cabai', 30)], cookMin: 35 }),
+  R({ id: 'patin-kuah-kuning', name: 'Patin kuah kuning (ibu-anak)', category: 'ikan', protein: 'ikan', serves: 4, method: 'kuah',
+    ingredients: [I('ikan_patin', 340), I('tomat', 40), I('garam', 4)], bumbu: [B('kuning', 100)], youtubeQuery: 'resep patin kuah kuning', note: 'Tidak untuk ayah.' }),
+  R({ id: 'bandeng-presto-goreng', name: 'Bandeng presto goreng (ayah)', category: 'ikan', protein: 'ikan', serves: 4, method: 'goreng', presto: true,
+    ingredients: [I('bandeng_presto', 340), I('minyak', 100)], note: 'Khusus ayah. Pastikan matang sempurna dan periksa sisa duri.' }),
+];
+
+// ====== TELUR ======
+const telur: Recipe[] = [
+  R({ id: 'telur-ceplok', name: 'Telur ceplok matang', category: 'telur', protein: 'telur', serves: 1, method: 'goreng', role: 'sarapan', childPortionFactor: 1, prepMin: 1, cookMin: 5,
+    ingredients: [I('telur', 1), I('minyak', 5), I('garam', 0.5)], youtubeQuery: 'cara membuat telur ceplok matang',
+    steps: ['Panaskan sedikit minyak di teflon.', 'Pecahkan telur, masak dengan api kecil-sedang.', 'Balik/tutup sampai kuning dan putih telur matang.', 'Beri garam secukupnya.'] }),
+  R({ id: 'telur-dadar-daun-bawang', name: 'Telur dadar daun bawang', category: 'telur', protein: 'telur', serves: 2, method: 'dadar',
+    ingredients: [I('telur', 4), I('daun_bawang', 10), I('minyak', 15), I('garam', 1)], cookMin: 10, favorite: true }),
+  R({ id: 'telur-dadar', name: 'Telur dadar', category: 'telur', protein: 'telur', serves: 2, method: 'dadar',
+    ingredients: [I('telur', 4), I('minyak', 15), I('garam', 1)], bumbu: [B('bawang_merah_cincang', 10)], cookMin: 10 }),
+  R({ id: 'telur-orak-arik', name: 'Telur orak-arik', category: 'telur', protein: 'telur', serves: 2, method: 'dadar',
+    ingredients: [I('telur', 4), I('daun_bawang', 5), I('minyak', 10), I('garam', 1)], cookMin: 8 }),
+  R({ id: 'semur-telur', name: 'Semur telur', category: 'telur', protein: 'telur', serves: 4, method: 'semur',
+    ingredients: [I('telur', 6), I('kecap_manis', 40), I('minyak', 20)], bumbu: [B('semur', 60)], cookMin: 30, favorite: true }),
+  R({ id: 'telur-dadar-keluarga', name: 'Telur dadar keluarga', category: 'telur', protein: 'telur', serves: 4, method: 'dadar',
+    ingredients: [I('telur', 6), I('daun_bawang', 15), I('minyak', 25), I('garam', 2)], cookMin: 15 }),
+  R({ id: 'telur-rebus', name: 'Telur rebus (pendamping)', category: 'telur', role: 'pendamping', protein: 'telur', serves: 2, method: 'rebus',
+    ingredients: [I('telur', 2), I('garam', 1)], cookMin: 12 }),
+];
+
+// ====== SAPI, HATI/AMPELA ======
+const sapi: Recipe[] = [
+  R({ id: 'rawon-sapi', name: 'Rawon daging sapi', category: 'daging_sapi', protein: 'sapi', serves: 4, method: 'kuah', ironRich: true, requiredDish: 'rawon',
+    ingredients: [I('sapi_daging', 340), I('garam', 5)], bumbu: [B('rawon', 160)], prepMin: 25, cookMin: 100, favorite: true, youtubeQuery: 'resep rawon sapi rumahan',
+    steps: ['Rebus daging sampai empuk (±60–90 menit), potong dadu.', 'Tumis bumbu rawon (kluwek matang) sampai harum.', 'Masukkan bumbu ke kaldu daging, masukkan daging, masak sampai meresap.', 'Anak: daging dipotong kecil/empuk, tidak pedas. Sambal dan pelengkap pedas hanya untuk dewasa.'] }),
+  R({ id: 'sapi-cincang-mentega', name: 'Daging sapi cincang mentega', category: 'daging_sapi', protein: 'sapi', serves: 4, method: 'tumis', ironRich: true,
+    ingredients: [I('sapi_cincang', 300), I('butter', 25), I('garam', 3)], bumbu: [B('bawang_putih_cincang', 30)], cookMin: 25 }),
+  R({ id: 'sapi-cincang-kecap', name: 'Daging cincang kecap', category: 'daging_sapi', protein: 'sapi', serves: 4, method: 'tumis', ironRich: true,
+    ingredients: [I('sapi_cincang', 300), I('kecap_manis', 40), I('minyak', 15)], bumbu: [B('bawang_jahe', 40)], cookMin: 25 }),
+  R({ id: 'semur-daging', name: 'Semur daging', category: 'daging_sapi', protein: 'sapi', serves: 4, method: 'semur', ironRich: true,
+    ingredients: [I('sapi_daging', 340), I('kecap_manis', 60), I('kentang', 100), I('minyak', 20)], bumbu: [B('semur', 80)], cookMin: 80 }),
+  R({ id: 'sup-daging', name: 'Sup daging', category: 'daging_sapi', protein: 'sapi', serves: 4, method: 'kuah', ironRich: true,
+    ingredients: [I('sapi_daging', 300), I('wortel', 100), I('kentang', 100), I('garam', 4)], bumbu: [B('putih', 60)], cookMin: 80 }),
+  R({ id: 'bola-daging-gf', name: 'Bola daging GF', category: 'daging_sapi', protein: 'sapi', serves: 4, method: 'rebus', ironRich: true,
+    ingredients: [I('sapi_cincang', 300), I('tepung_gf', 40), I('telur', 1), I('garam', 3)], bumbu: [B('bawang_putih_cincang', 20)], cookMin: 35 }),
+  R({ id: 'daging-tumis-bawang', name: 'Daging tumis bawang', category: 'daging_sapi', protein: 'sapi', serves: 4, method: 'tumis', ironRich: true,
+    ingredients: [I('sapi_daging', 300), I('minyak', 25), I('garam', 3)], bumbu: [B('bawang_putih_cincang', 25), B('bawang_merah_cincang', 40)], cookMin: 60 }),
+  R({ id: 'hati-ayam-kecap', name: 'Hati ayam kecap', category: 'hati_ampela', protein: 'hati', serves: 4, method: 'tumis', ironRich: true,
+    ingredients: [I('hati_ayam', 280), I('kecap_manis', 40), I('minyak', 20)], bumbu: [B('bawang_jahe', 50)], childPortionGrams: { hati_ayam: 25 }, cookMin: 25,
+    note: 'Hati anak dalam porsi kecil (tinggi vitamin A); jangan terlalu sering.' }),
+  R({ id: 'sambal-goreng-ati-ampela-kentang', name: 'Sambal goreng ati ampela kentang tidak pedas', category: 'hati_ampela', protein: 'hati', serves: 4, method: 'tumis', ironRich: true, requiredDish: 'sambal_goreng',
+    ingredients: [I('hati_ayam', 140), I('ampela_ayam', 140), I('kentang', 240), I('santan', 130), I('daun_salam', 2), I('minyak', 30), I('garam', 4)], bumbu: [B('merah_tanpa_cabai', 80)],
+    childPortionGrams: { hati_ayam: 25, ampela_ayam: 40 }, cookMin: 50, favorite: true, youtubeQuery: 'resep sambal goreng ati ampela kentang tanpa cabai',
+    steps: ['Rebus ampela sampai empuk, potong; goreng kentang setengah matang.', 'Tumis bumbu merah TANPA cabai sampai harum.', 'Masukkan hati dan ampela, santan, daun salam; masak sampai matang.', 'Masukkan kentang, masak sampai bumbu meresap. Tidak menggunakan cabai.'] }),
+];
+
+// ====== SEAFOOD ANAK ======
+const seafood: Recipe[] = [
+  R({ id: 'udang-bawang-putih', name: 'Udang bawang putih', category: 'udang', protein: 'udang', serves: 2, method: 'tumis',
+    ingredients: [I('udang', 140), I('minyak', 20), I('garam', 2)], bumbu: [B('bawang_putih_cincang', 25)], cookMin: 15, weekendOk: true, note: 'Prioritas porsi anak. Ayah tidak makan udang.' }),
+  R({ id: 'udang-saus-tomat', name: 'Udang saus tomat', category: 'udang', protein: 'udang', serves: 2, method: 'tumis',
+    ingredients: [I('udang', 140), I('tomat', 100), I('minyak', 15)], bumbu: [B('merah_tanpa_cabai', 30)], cookMin: 15 }),
+  R({ id: 'cumi-cincang-bawang-putih', name: 'Cumi cincang bawang putih', category: 'cumi', protein: 'cumi', serves: 2, method: 'tumis', weekendOk: false,
+    ingredients: [I('cumi', 140), I('minyak', 20), I('garam', 2)], bumbu: [B('bawang_putih_cincang', 25)], cookMin: 15,
+    note: 'Khusus anak, hanya Senin–Jumat. Masak matang & empuk, potong sesuai usia.' }),
+  R({ id: 'cumi-tumis-jahe', name: 'Cumi tumis jahe', category: 'cumi', protein: 'cumi', serves: 2, method: 'tumis', weekendOk: false,
+    ingredients: [I('cumi', 140), I('minyak', 15)], bumbu: [B('bawang_jahe', 30)], cookMin: 15, note: 'Khusus anak, hanya Senin–Jumat.' }),
+  R({ id: 'cumi-frozen-siap-saji', name: 'Cumi frozen siap saji (porsi anak)', category: 'cumi', protein: 'cumi', serves: 1, method: 'lainnya', weekendOk: false, childPortionFactor: 1, prepMin: 2, cookMin: 10,
+    ingredients: [I('cumi_frozen_porsi', 1)], note: 'Khusus anak, weekday. Periksa label gluten-free produk.' }),
+];
+
+// ====== TAHU/TEMPE PENDAMPING ======
+const pendamping: Recipe[] = [
+  R({ id: 'tempe-goreng', name: 'Tempe goreng (pendamping)', category: 'tahu_tempe', role: 'pendamping', protein: 'tahu_tempe', serves: 4, method: 'goreng',
+    ingredients: [I('tempe', 200), I('minyak', 80), I('garam', 2)], bumbu: [B('bawang_putih_cincang', 10)], cookMin: 15 }),
+  R({ id: 'tahu-goreng', name: 'Tahu goreng (pendamping)', category: 'tahu_tempe', role: 'pendamping', protein: 'tahu_tempe', serves: 4, method: 'goreng',
+    ingredients: [I('tahu', 200), I('minyak', 80), I('garam', 2)], bumbu: [B('bawang_putih_cincang', 10)], cookMin: 15 }),
+];
+
+export const LAUK_RECIPES: Recipe[] = [...ayam, ...ikan, ...telur, ...sapi, ...seafood, ...pendamping];

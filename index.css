@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html, body, #root { min-height: 100%; }
+body {
+  margin: 0;
+  background: #FFFCF7;
+  color: #343A34;
+  font-family: Inter, system-ui, 'Segoe UI', Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer components {
+  .card { @apply rounded-2xl bg-white shadow-soft border border-beige/70 p-4; }
+  .btn { @apply inline-flex items-center justify-center gap-1.5 rounded-xl px-3.5 py-2.5 text-sm font-semibold transition active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none; min-height: 44px; }
+  .btn-primary { @apply bg-sage text-white hover:bg-sage-dark; }
+  .btn-soft { @apply bg-sage-light text-sage-dark hover:bg-sage-light/70; }
+  .btn-ghost { @apply bg-transparent text-charcoal border border-beige hover:bg-cream; }
+  .btn-danger { @apply bg-terra text-white hover:bg-terra-dark; }
+  .btn-sm { @apply px-2.5 py-1.5 text-xs; min-height: 34px; }
+  .input { @apply w-full rounded-xl border border-beige bg-warm px-3 py-2.5 text-sm outline-none focus:border-sage focus:ring-2 focus:ring-sage/30; min-height: 44px; }
+  .label { @apply mb-1 block text-xs font-semibold text-charcoal/70; }
+  .chip { @apply inline-flex items-center rounded-full bg-cream px-2.5 py-1 text-xs font-medium text-charcoal border border-beige; }
+  .h-section { @apply mb-2 mt-5 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-sage-dark; }
+}
+
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+@media print {
+  .no-print, nav { display: none !important; }
+  body { background: #fff; }
+  .card { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+  main { padding: 0 !important; max-width: none !important; }
+}
